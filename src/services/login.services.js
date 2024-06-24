@@ -1,6 +1,6 @@
 const { Sequelize, Op } = require('sequelize');
-const db = require('../../models/index');
-const { sequelize } = require('../../models/index');
+const db = require('../../model/index');
+const { sequelize } = require('../../model/index');
 const logger = require('../config/logger');
 
 const loginService = {};
@@ -94,7 +94,7 @@ loginService.deleteExpiredRefreshTokens = async () => {
     },
   });
   await Promise.all(expiredTokens.map((token) => token.destroy()));
-  logger.info('Deleting Expired Refresh Token');
+  console.log('Deleting Expired Refresh Token');
 };
 
 loginService.deleteExpiredUserCoupon = async () => {
@@ -104,7 +104,7 @@ loginService.deleteExpiredUserCoupon = async () => {
     },
   });
   await Promise.all(expiredTokens.map((token) => token.destroy()));
-  logger.info('Deleting Expired Refresh Token');
+  console.log('Deleting Expired Refresh Token');
 };
 
 module.exports = loginService;
