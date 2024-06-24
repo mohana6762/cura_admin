@@ -2,10 +2,15 @@
   "name": "admin",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
+    "migrate:windows:local": "SET NODE_ENV=local&& npx sequelize-cli db:migrate",
+    "seed:windows:local": "SET NODE_ENV=local&& npx sequelize-cli db:seed:all",
+    "start:windows:local": "SET NODE_ENV=local&& nodemon src/app.js",
+    
     "start": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "author": "",
   "license": "ISC",
