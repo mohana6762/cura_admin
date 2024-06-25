@@ -3,7 +3,7 @@ const config = require("../src/config/vars");
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable(
-      "tickets",
+      "techSupport",
       {
         id: {
           allowNull: false,
@@ -11,23 +11,14 @@ module.exports = {
           primaryKey: true,
           type: Sequelize.INTEGER,
         },
-        user_id: {
+        name: {
+          type: Sequelize.STRING,
+        },
+        email: {
+          type: Sequelize.STRING,
+        },
+        phoneNo: {
           type: Sequelize.INTEGER,
-        },
-        tech_id: {
-          type: Sequelize.INTEGER,
-        },
-        category: {
-          type: Sequelize.STRING,
-        },
-        issueTitle: {
-          type: Sequelize.STRING,
-        },
-        description: {
-          type: Sequelize.STRING,
-        },
-        status: {
-          type: Sequelize.ENUM("Open", "Closed", "In Progress"),
         },
         isTrash: {
           type: Sequelize.BOOLEAN,
@@ -50,6 +41,6 @@ module.exports = {
     );
   },
   async down(queryInterface) {
-    await queryInterface.dropTable("tickets");
+    await queryInterface.dropTable("techSupport");
   },
 };

@@ -2,8 +2,8 @@ const { Model } = require('sequelize');
 const config = require('../src/config/vars');
 
 module.exports = (sequelize, DataTypes) => {
-  class tenant extends Model {}
-  tenant.init(
+  class tickets extends Model {}
+  tickets.init(
     {
       user_id: DataTypes.INTEGER,
       category: DataTypes.STRING,
@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'tenant',
+      modelName: 'tickets',
       schema: config.db.schema,
       freezeTableName: true,
     }
   );
   
-  return admin;
+  return tickets;
 };
