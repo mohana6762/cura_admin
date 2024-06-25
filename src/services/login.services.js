@@ -1,13 +1,12 @@
 const { Sequelize, Op } = require('sequelize');
 const db = require('../../model/index');
 const { sequelize } = require('../../model/index');
-const logger = require('../config/logger');
 
 const loginService = {};
 
 
 loginService.updateUserPassword = async (userId, newPassword) => {
-  return db.adminUser.update(
+  return db.admin.update(
     {
       password: newPassword,
     },
@@ -20,7 +19,7 @@ loginService.updateUserPassword = async (userId, newPassword) => {
 };
 
 loginService.checkUser = async (email) => {
-  const existingCode = await db?.adminUser?.findOne({
+  const existingCode = await db.admin.findOne({
     where: {
       email,
       isActive: true,
@@ -71,7 +70,7 @@ loginService.AdminTokenExist = async (token) => {
 };
 
 loginService.findAdminUserByEmailAndId = async (email, userId) => {
-  return db.adminUser.findOne({
+  return db.admin.findOne({
     where: {
       email,
       id: userId,

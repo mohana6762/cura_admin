@@ -27,6 +27,9 @@ module.exports = {
         password: {
           type: Sequelize.STRING,
         },
+        token: {
+          type: Sequelize.STRING,
+        },
         isActive: {
           type: Sequelize.BOOLEAN,
         },

@@ -29,6 +29,11 @@ const rescodes = {
       value: 'Page not Found',
       html: 'Page not Found',
     },
+    noUser: {
+      codes: 'noUser',
+      value: 'User not Found',
+      html: 'User not Found',
+    }
   };
   module.exports = rescodes;
   

@@ -7,10 +7,7 @@
     "migrate:windows:local": "SET NODE_ENV=local&& npx sequelize-cli db:migrate",
     "seed:windows:local": "SET NODE_ENV=local&& npx sequelize-cli db:seed:all",
     "start:windows:local": "SET NODE_ENV=local&& nodemon src/app.js",
-    
-    "start": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-    
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +24,8 @@
     "http-status": "^1.7.4",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.14",
+    "path": "^0.12.7",
     "pg": "^8.12.0",
     "sequelize": "^6.37.3"
   },
