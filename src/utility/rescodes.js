@@ -33,7 +33,23 @@ const rescodes = {
       codes: 'noUser',
       value: 'User not Found',
       html: 'User not Found',
-    }
+    },
+
+    checkCred: {
+      codes: 'checkCred',
+      value: 'Check your credential',
+      html: 'Check your credential',
+    },
+    passRS: {
+      codes: 'passRS',
+      value: 'Reset Password Success',
+      html: 'Reset Password Success',
+    },
+    resetCode:{
+      codes: 'faildRS',
+      value: 'Reset Password Faild',
+      html: 'Reset Password Faild',
+  },
   };
   module.exports = rescodes;
   
