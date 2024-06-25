@@ -135,7 +135,6 @@ login.forgotPassword = async (req, res, next) => {
 
 // User logout
 login.logout = async (req, res, next) => {
- console.log("ksjjd", )
     try {
       const { token } = req.body;
       const checkTokenExist = await loginService.adminTokenExist(token);
@@ -158,7 +157,6 @@ login.logout = async (req, res, next) => {
       }
       return '';
     } catch (err) {
-     console.log("eded", err);
       res.response = {
         code: 500,
         data: { status: 'Error', message: rescodes?.IntSerError },
