@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forgot Password Request</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .Tophead {
+      width: 640px;
+      height: 828px;
+      border: 32px solid #eaecf0;
+      padding: 20px;
+      margin: 50px auto;
+      text-align: center;
+      background-color: rgb(255, 255, 255);
+      font-family: 'Onest', sans-serif;
+      color: #98a2b3;
+    }
+
+    .topbox {
+      border: 3px solid transparent;
+      width: 576px;
+      height: 80px;
+      margin-top: -20px;
+      margin-left: -20px;
+      background-color: rgb(255, 255, 255);
+      transition: border-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 20px;
+    }
+
+
+    .midbox {
+      border: 3px solid transparent;
+      width: 576px;
+      height: auto;
+      margin-left: -20px;
+      background-color: rgb(255, 255, 255);
+      transition: border-color 0.3s;
+      text-align: left;
+      padding-left: 20px;
+      line-height: 20px;
+    }
+
+    .downbox {
+      border: 3px solid transparent;
+      width: 576px;
+      height: 340px;
+      margin-left: -20px;
+      background-color: #ffffff;
+      transition: border-color 0.3s;
+    }
+
+
+    .innerbox1 {
+      border: 3px solid transparent;
+      border-style: dotted;
+      width: 528px;
+      height: 72px;
+      font-size: 16px;
+      margin-left: 15px;
+      transition: border-color 0.3s;
+      text-align: left;
+      margin-top: 40px;
+      color: #98a2b3;
+    }
+
+    .innerbox2 {
+      border: 3px solid transparent;
+      border-style: dotted;
+      width: 528px;
+      height: 20px;
+      font-size: 14px;
+      margin-left: 15px;
+      margin-top: 40px;
+      transition: border-color 0.3s;
+      text-align: left;
+      color: #98a2b3;
+      font-family: 'Onest', sans-serif;
+    }
+
+
+
+    .innerbox3 {
+      border: 3px solid transparent;
+      border-style: dotted;
+      width: 528px;
+      height: 60px;
+      margin-left: 15px;
+      margin-top: 60px;
+      transition: border-color 0.3s;
+      color: #98a2b3;
+      display: flex;
+      align-items: center;
+    }
+
+
+
+    .page-template {
+      width: 640px;
+      height: 828px;
+      border: 32px solid #eaecf0;
+      padding: 20px;
+      margin: 50px auto;
+      text-align: center;
+      background-color: rgb(255, 255, 255);
+      font-family: 'Onest', sans-serif;
+      color: #98a2b3;
+    }
+
+    .line {
+      width: 95%;
+      color: #eaecf0;
+      margin-top: 30px;
+    }
+
+    .brand {
+      border: 3px solid transparent;
+      border-style: dotted;
+      width: 170px;
+      height: 50px;
+
+      margin-left: -360px;
+      margin-top: 10px;
+      padding-top: 3px;
+      transition: border-color 0.3s;
+      text-align: right;
+      color: #2159b9;
+    }
+
+
+    .brandbuttom {
+      margin-top: 1px;
+      margin-left: -5px;
+      padding-top: 1px;
+      width: 170px;
+      height: 50px;
+      border: 3px solid transparent;
+      border-style: dotted;
+      transition: border-color 0.3s;
+    }
+
+
+    .logo1 {
+      margin-left: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="Tophead">
+      <div class="topbox">
+        <img src="data:image/png;base64,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" width="135.529px" height="32px"
+          alt="logo" />
+      </div>
+      <div class="midbox">
+        <h3>Forgot Password Request</h3>
+        <p>Hello <%= firstName %>,</p>
+        <p>We received a request to reset your password. If you didn't make this request, you can ignore this email.</p>
+        <p style="margin-top: 8px">
+          Click the below link for reset your password:
+        </p>
+        <p>
+            <a href="<%= resetLink %>"><%= resetLink %></a>
+        </p>
+        <p>This reset link will expire in 24 Hours.</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

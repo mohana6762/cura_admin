@@ -7,7 +7,7 @@ const adminAuth = require('../middleware/auth');
 const router = express.Router();
 
 router.post('/', validate(loginValidation.login), adminLogin);
-// router.post('/forgotpassword', validate(loginValidation.forgetPassword), forgotPassword);
+router.post('/forgotpassword', validate(loginValidation.forgetPassword), forgotPassword);
 // router.post('/resetpassword', validate(loginValidation.resetpassword), resetPassword);
 // router.post('/refreshtoken', validate(loginValidation.logout), adminRefreshToken);
 // router.post('/logout', adminAuth, validate(loginValidation.logout), logout);
