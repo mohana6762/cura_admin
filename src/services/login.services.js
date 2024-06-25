@@ -18,6 +18,20 @@ loginService.updateUserPassword = async (userId, newPassword) => {
   );
 };
 
+
+loginService.updateUserToken = async (userId, token) => {
+  return db.admin.update(
+    {
+      token
+    },
+    {
+      where: {
+        id: userId,
+      },
+    }
+  );
+};
+
 loginService.checkUser = async (email) => {
   const existingCode = await db.admin.findOne({
     where: {

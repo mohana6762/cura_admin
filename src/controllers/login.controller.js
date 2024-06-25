@@ -29,7 +29,8 @@ login.adminLogin = async (req, res, next) => {
     }
     const user = { name: email, id: emailExist.id };
     const accessToken = await values.generateAccessToken(user);
-    const refreshToken = jwt?.sign(user, config?.app?.refreshtoken);
+    const updateToken = await loginService.updateUserToken(emailExist.id , accessToken)
+    // const refreshToken = jwt?.sign(user, config?.app?.refreshtoken);
     //   const expiresAt = new Date();
     //   expiresAt.setDate(expiresAt.getDate() + 1);
     //   await loginService.adminRefreshToken({
@@ -222,5 +223,7 @@ login.logout = async (req, res, next) => {
     return next();
   }
 };
+
+
 
 module.exports = login;
