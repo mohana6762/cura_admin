@@ -62,47 +62,37 @@ login.adminLogin = async (req, res, next) => {
 };
 
 // User resetpassword
+
 login.resetPassword = async (req, res, next) => {
-  try {
-    const resetCode = req.query.resetCode;
-    const { newPassword } = req.body;
-    const checklink = await loginService.checkPasswordChangeRequest(resetCode);
-    if (checklink && Object.keys(checklink)?.length) {
-      const encryptedPassword = jwt.sign(
-        { password: newPassword },
-        config.app.accesstoken
-      );
-      const updatePass = await loginService.updateUserPassword(
-        checklink?.user_id,
-        encryptedPassword
-      );
-      const deleteReq = await loginService.deletePasswordChangeRequest(
-        resetCode
-      );
-      if (deleteReq && updatePass) {
-        res.response = {
-          code: 200,
-          data: { status: "ok", message: rescodes?.passRS },
-        };
-        return next();
-      }
-    } else {
-      await loginService.deletePasswordChangeRequest(resetCode);
+    try {
+      // const resetCode = req.query.resetCode;
+      const { newPassword } = req.body;
+      const userId = req?.user?.id
+      if (newPassword &&  userId) {
+        const encryptedPassword = jwt.sign(
+          { password: newPassword },
+          config.app.accesstoken
+        );
+        const updatePass = await loginService.updateUserPassword(
+          userId,
+          encryptedPassword
+        );
+        if (updatePass) {
+          res.response = {
+            code: 200,
+            data: { status: "ok", message: rescodes?.passRS },
+          };
+          return next();
+        }
+      } 
+    } catch (err) {
       res.response = {
-        code: 404,
-        data: { status: "Error", message: rescodes?.resetCode },
+        code: 500,
+        data: { status: "Error", message: rescodes?.error },
       };
       return next();
     }
-    return "";
-  } catch (err) {
-    res.response = {
-      code: 500,
-      data: { status: "Error", message: rescodes?.error },
-    };
-    return next();
-  }
-};
+  };
 
 // User forgotpassword
 login.forgotPassword = async (req, res, next) => {
@@ -143,87 +133,39 @@ login.forgotPassword = async (req, res, next) => {
   }
 };
 
-// User generate Refresh Token
-login.adminRefreshToken = async (req, res, next) => {
-  try {
-    const { token } = req.body;
-    const checkTokenExist = await loginService.adminTokenExist(token);
-    if (!checkTokenExist) {
-      res.response = {
-        code: 400,
-        data: { status: "Error", message: rescodes?.tokenAldel },
-      };
-      return next();
-    }
-    const refreshTokenUser = jwt.verify(token, config.app.refreshtoken);
-    const existQuery = await loginService.findAdminUserByEmailAndId(
-      refreshTokenUser?.name,
-      refreshTokenUser?.id
-    );
-    if (!existQuery || !Object.keys(existQuery)?.length) {
-      res.response = {
-        code: 401,
-        data: { status: "Error", message: rescodes?.unAuthorized },
-      };
-      return next();
-    }
-    const getId = await loginService.findRefreshTokensByAdminUserId(
-      existQuery?.dataValues?.id
-    );
-    const result = getId.map((val) => val?.dataValues?.token);
-    if (!result?.includes(token)) {
-      res.response = {
-        code: 403,
-        data: { status: "Error", message: rescodes?.forbidden },
-      };
-      return next();
-    }
-    const users = { name: refreshTokenUser?.name, id: refreshTokenUser?.id };
-    const accessToken = await values.generateAccessToken(users);
-    res.response = {
-      code: 200,
-      data: { status: "Ok", data: { accessToken, expiresIn: 3600000 } },
-    };
-    return next();
-  } catch (err) {
-    res.response = {
-      code: 500,
-      data: { status: "Error", message: rescodes?.wentWrong },
-    };
-    return next();
-  }
-};
-
 // User logout
 login.logout = async (req, res, next) => {
-  try {
-    const { token } = req.body;
-    const checkTokenExist = await loginService.AdminTokenExist(token);
-    if (!checkTokenExist) {
-      res.response = {
-        code: 400,
-        data: { status: "Error", message: rescodes?.tokenAldel },
-      };
-      return next();
-    }
-    const deletedRows = await loginService.deleteAdminRefreshToken(token);
-    if (deletedRows) {
-      res.response = {
-        code: 200,
-        data: { status: "Ok", message: rescodes?.logout },
-      };
-      return next();
-    }
-    return "";
-  } catch (err) {
-    res.response = {
-      code: 500,
-      data: { status: "Error", message: rescodes?.wentWrong },
-    };
-    return next();
-  }
-};
+ console.log("ksjjd", )
+    try {
+      const { token } = req.body;
+      const checkTokenExist = await loginService.adminTokenExist(token);
+      if (!checkTokenExist) {
+        res.response = {
+          code: 400,
+          data: { status: 'Error', message: rescodes?.tokenAldel },
+        };
+        return next();
+      }
 
+  
+      const deletedRows = await loginService.deleteAdminRefreshToken(token);
+      if (deletedRows) {
+        res.response = {
+          code: 200,
+          data: { status: 'Ok', message: rescodes?.logout },
+        };
+        return next();
+      }
+      return '';
+    } catch (err) {
+     console.log("eded", err);
+      res.response = {
+        code: 500,
+        data: { status: 'Error', message: rescodes?.IntSerError },
+      };
+      return next();
+    }
+  };
 
 
 module.exports = login;

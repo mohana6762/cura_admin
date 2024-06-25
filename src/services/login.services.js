@@ -44,7 +44,7 @@ loginService.checkUser = async (email) => {
 };
 
 loginService.adminTokenExist = async (token) => {
-  const data = await db.adminRefreshToken.findOne({
+  const data = await db.admin.findOne({
     where: {
       token,
     },
@@ -52,27 +52,23 @@ loginService.adminTokenExist = async (token) => {
   return data;
 };
 
-loginService.findRefreshTokensByAdminUserId = async (userId) => {
-  return db.adminRefreshToken.findAll({
-    where: {
-      user_id: userId,
-    },
-  });
-};
+
 
 loginService.deleteAdminRefreshToken = async (token) => {
   try {
-    const deletedRows = await db.adminRefreshToken.destroy({
-      where: {
-        token,
-      },
-    });
-
+    const deletedRows = await db.admin.update(
+      { token: null },
+      {
+        where: {
+          token: token,
+        },
+      }
+    );
     return deletedRows;
   } catch (err) {
     throw new Error(err.message);
   }
-};
+}
 
 loginService.AdminTokenExist = async (token) => {
   const data = await db.adminRefreshToken.findOne({

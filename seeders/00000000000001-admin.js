@@ -15,7 +15,7 @@ module.exports = {
         {
           firstName: 'mohana',
           lastName: 'M',
-          email: 'mohana98m@gmail.com',
+          email: 'mohanasurya98m@gmail.com',
           password: encryptedPassword,
           userName: 'mohana',
           isActive: true,

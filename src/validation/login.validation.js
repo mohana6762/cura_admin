@@ -21,8 +21,8 @@ const logout = {
 };
 
 const resetpassword = {
-  query: Joi.object({
-    resetCode: Joi.string().required(),
+  header: Joi.object({
+    token: Joi.string().required(),
   }),
   body: Joi.object({
     newPassword: Joi.string().min(8).required(),
