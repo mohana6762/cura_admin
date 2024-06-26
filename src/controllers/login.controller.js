@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const loginService = require("../services/login.services");
+const loginService = require("../services/login.service");
 const rescodes = require("../utility/rescodes");
 const config = require("../config/vars");
 const values = require("../utility/getValues");

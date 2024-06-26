@@ -54,6 +54,11 @@ const rescodes = {
       codes: 'tenantCreate',
       value: 'Tenant created successfully',
       html: 'Tenant created successfully',
+    },
+    techAlreadyExist: {
+      codes: 'techAlreadyExist',
+      value: 'Technician already exist!',
+      html: 'Technician already exist!',
     }
   };
   module.exports = rescodes;
