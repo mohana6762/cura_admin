@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       postalCode: DataTypes.STRING,
       country: DataTypes.STRING,
       state: DataTypes.STRING,
-      licenseId: DataTypes.INTEGER,
+      // licenseId: DataTypes.INTEGER,
       status: DataTypes.ENUM('Active', 'Suspended', 'Pending Termination', 'Terminated'),
       isTrash: DataTypes.BOOLEAN,
     },
@@ -26,6 +26,11 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true,
     }
   );
+  
+  tenant.associate = function (models) {
+    tenant.belongsTo(models.license, { foreignKey: 'user_id', as: 'tenantLicense' });
+    tenant.belongsTo(models.tickets, { foreignKey: 'user_id', as: 'tenantTickets' });
+  };
   
   return tenant;
 };

@@ -49,7 +49,12 @@ const rescodes = {
       codes: 'faildRS',
       value: 'Reset Password Faild',
       html: 'Reset Password Faild',
-  },
+    },
+    tenantCreate: {
+      codes: 'tenantCreate',
+      value: 'Tenant created successfully',
+      html: 'Tenant created successfully',
+    }
   };
   module.exports = rescodes;
   

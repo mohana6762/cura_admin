@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true,
     }
   );
-  
+
+  license.associate = function (models) {
+    license.belongsTo(models.tenant, { foreignKey: 'user_id', as: 'tenantLicense' });
+  }
+
   return license;
 };

@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   tickets.init(
     {
       user_id: DataTypes.INTEGER,
+      tech_id: DataTypes.INTEGER,
       category: DataTypes.STRING,
       issueTitle: DataTypes.STRING,
       description: DataTypes.STRING,
@@ -19,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true,
     }
   );
+
+  tickets.associate = function (models) {
+    tickets.hasMany(models.tenant, { foreignKey: 'user_id', as: 'tenantTickets' });
+    tickets.hasMany(models.techSupport, { foreignKey: 'tech_id', as: 'tenantTechSupport' });
+  }
   
   return tickets;
 };

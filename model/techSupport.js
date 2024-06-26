@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true,
     }
   );
-  
+  techSupport.associate = function (models) {
+    techSupport.belongsTo(models.license, { foreignKey: 'id', as: 'tenantLicense' });
+  } 
+
   return techSupport;
 };
