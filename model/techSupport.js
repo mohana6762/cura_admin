@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'license',
+      modelName: 'techSupport',
       schema: config.db.schema,
       freezeTableName: true,
     }
