@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING,
       email: DataTypes.STRING,
-      phoneNo: DataTypes.INTEGER,
+      phoneNo: DataTypes.BIGINT,
       website: DataTypes.STRING,
       buildingName: DataTypes.STRING,
       address: DataTypes.STRING,
@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       postalCode: DataTypes.STRING,
       country: DataTypes.STRING,
       state: DataTypes.STRING,
-      // licenseId: DataTypes.INTEGER,
       status: DataTypes.ENUM('Active', 'Suspended', 'Pending Termination', 'Terminated'),
       isTrash: DataTypes.BOOLEAN,
     },

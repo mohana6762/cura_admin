@@ -19,7 +19,7 @@ module.exports = {
           unique: true,
         },
         phoneNo: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.BIGINT,
         },
         website: {
           type: Sequelize.STRING,
@@ -41,9 +41,6 @@ module.exports = {
         },
         state: {
             type: Sequelize.STRING,
-        },
-        licenseId: {
-            type: Sequelize.INTEGER,
         },
         status: {
             type: Sequelize.ENUM('Active', 'Suspended', 'Pending Termination', 'Terminated'),
@@ -72,3 +69,4 @@ module.exports = {
     await queryInterface.dropTable('tenant');
   },
 };
+

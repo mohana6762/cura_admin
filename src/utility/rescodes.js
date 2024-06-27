@@ -34,7 +34,6 @@ const rescodes = {
       value: 'User not Found',
       html: 'User not Found',
     },
-
     checkCred: {
       codes: 'checkCred',
       value: 'Check your credential',
@@ -50,6 +49,11 @@ const rescodes = {
       value: 'Reset Password Faild',
       html: 'Reset Password Faild',
     },
+    tenantAlreadyExist: {
+      codes: 'tenantAlreadyExist',
+      value: 'Tenant already exist!',
+      html: 'Tenant already exist!',
+    },
     tenantCreate: {
       codes: 'tenantCreate',
       value: 'Tenant created successfully',
@@ -59,6 +63,26 @@ const rescodes = {
       codes: 'techAlreadyExist',
       value: 'Technician already exist!',
       html: 'Technician already exist!',
+    },
+    updateTechSupport: {
+      codes: 'updateTechSupport',
+      value: 'Technician updated successfully!',
+      html: 'Technician updated successfully!',
+    },
+    deleteTechSupport: {
+      codes: 'deleteTechSupport',
+      value: 'Technician deleted successfully!',
+      html: 'Technician deleted successfully!',
+    },
+    updateTenant: {
+      codes: 'updateTechSupport',
+      value: 'Tenant updated successfully!',
+      html: 'Tenant updated successfully!',
+    },
+    deleteTenant: {
+      codes: 'deleteTechSupport',
+      value: 'Tenant deleted successfully!',
+      html: 'Tenant deleted successfully!',
     }
   };
   module.exports = rescodes;
