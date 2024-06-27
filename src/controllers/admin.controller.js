@@ -16,8 +16,7 @@ admin.getAdmin = async (req, res, next) => {
     }
     res.response = {
       code: 200,
-      message: rescodes?.success,
-      data: getAdmin,
+      data: { status: 'Ok', data: getAdmin.dataValues },
     };
     return next();
   } catch (err) {

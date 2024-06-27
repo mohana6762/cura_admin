@@ -29,13 +29,11 @@ tenant.getTenants = async (req, res, next) => {
       if (response.status === 201 && response.data) {
         res.response = {
           code: 201,
-          message: response.data.message || 'Tenant created successfully',
-          data: response.data.data 
+          data: { status: 'Ok', data: response.data.data  },
         };
       }
       return next();
     } catch (err) {
-      console.log(err);
       res.response = {
         code: 500,
         data: { status: "Error", message: rescodes?.wentWrong },

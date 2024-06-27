@@ -25,7 +25,6 @@ async function authenticateToken(req, res, next) {
       if (token == null || !users) return res?.sendStatus(401);
       const usersData = { ...users?.dataValues };
       req.user = usersData;
-      console.log("jiedjiehd",usersData )
       next();
     });
   } catch (error) {
