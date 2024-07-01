@@ -88,6 +88,21 @@ const rescodes = {
       codes: 'deleteTechSupport',
       value: 'Tenant deleted successfully!',
       html: 'Tenant deleted successfully!',
+    },
+    ticketCreate: {
+      codes: 'ticketCreate',
+      value: 'Ticket created successfully',
+      html: 'Ticket created successfully',
+    },
+    deleteTicket: {
+      codes: 'deleteTicket',
+      value: 'Ticket deleted successfully!',
+      html: 'Ticket deleted successfully!',
+    },
+    updateTicket: {
+      codes: 'updateTicket',
+      value: 'Ticket updated successfully!',
+      html: 'Ticket updated successfully!',
     }
   };
   module.exports = rescodes;
