@@ -59,6 +59,11 @@ const rescodes = {
       value: 'Tenant created successfully',
       html: 'Tenant created successfully',
     },
+    techSupportCreate: {
+      codes: 'techSupportCreate',
+      value: 'Technician created successfully',
+      html: 'Technician created successfully',
+    },
     techAlreadyExist: {
       codes: 'techAlreadyExist',
       value: 'Technician already exist!',

@@ -1,5 +1,4 @@
 const rescodes = require("../utility/rescodes");
-const axios = require("axios")
 const tenantService = require("../services/tenant.service")
 
 const tenant = {};
@@ -11,7 +10,7 @@ tenant.createTenant = async (req, res, next) => {
     const userExist = await tenantService.findTenant(email);
     if(userExist){
       res.response = {
-        code: 404,
+        code: 400,
         data: {
           status: 'Error',
           message: rescodes?.techAlreadyExist,
@@ -39,8 +38,8 @@ tenant.createTenant = async (req, res, next) => {
 
 tenant.getTenants = async (req, res, next) => {
     try {
-      const { id, name, email, search, status } = req.query;
-      const filters = { id, name, email, search, status };
+      const { id, name, email, status } = req.query;
+      const filters = { id, name, email, status };
       const tenants = await tenantService.getAllTenants(filters);
         res.response = {
           code: 201,

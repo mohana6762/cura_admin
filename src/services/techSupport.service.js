@@ -10,27 +10,43 @@ techSupportService.existTech = async (email) => {
   });
 };
 
-techSupportService.createTechSupport = async (name, email, phoneNo) => {
-  return db.techSupport.create(
-    name, 
-    email,
-    phoneNo
-  );
+techSupportService.createTechSupport = async (data) => {
+  data.isTrash = false;
+  return db.techSupport.create(data);
 };
 
-techSupportService.getTechnician = async (email) => {
-  return db.techSupport.findOne({
-    where: {
-      email: email,
-    },
-  });
+techSupportService.getTechnician = async (id) => {
+  return db.techSupport.findByPk(id);
 };
+
+techSupportService.getAllTechnician = async (filters) => {
+  try {
+    const whereClause = {};
+
+    if (filters.id !== undefined) {
+        whereClause.id = filters.id;
+    }
+
+    if (filters.name !== undefined) {
+        whereClause.name = { [Op.iLike]: `%${filters.name}%` };
+    }
+
+    if (filters.email !== undefined) {
+        whereClause.email = { [Op.iLike]: `%${filters.email}%` };
+    }
+
+    const tenants = await db.techSupport.findAll({
+        where: Object.keys(whereClause).length > 0 ? whereClause : undefined,  // Use undefined to fetch all tenants if whereClause is empty
+    });
+    return tenants;
+} catch (error) {
+    throw new Error('Error fetching tenants: ' + error.message);
+}
+}
 
 techSupportService.updateTechnician = async (id, data) => {
   return db.techSupport.update(
-    {
-      data
-    },
+    data,
     {
     where: {
       id

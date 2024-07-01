@@ -98,7 +98,7 @@ tenantService.getAllTenants = async (filters) => {
 };
   
 tenantService.getTenantById = async (id) => {
-  return db.tenant.findByPk(id)
+  return db.tenant.findByPk(id);
 };
 
 tenantService.createTenant = async (tenantData) => {
